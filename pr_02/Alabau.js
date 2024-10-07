@@ -91,6 +91,7 @@ let Alarm_hrs = 25;
 let Alarm_min = 60;
 let Alarm_sec = 60;
 let audio2 = document.getElementById("audio2");
+document.getElementById("songPlaying").innerHTML = "Now Playing : " + document.getElementById("playlist").value;
 let clock = window.setInterval(function(){
     let time = new Date();
     let rellotge = document.getElementById("reloj");
@@ -101,11 +102,13 @@ let clock = window.setInterval(function(){
         Alarm_hrs = document.getElementById("alarmHrs").value;
         Alarm_min = document.getElementById("alarmMin").value;
         Alarm_sec = document.getElementById("alarmSec").value;
+        document.getElementById("time").innerHTML = `Alarm will sound at: `+Alarm_hrs + `:`+ Alarm_min + `:` + Alarm_sec;
     });
     if(Alarm_hrs == time.getHours() && Alarm_min == time.getMinutes() && Alarm_sec == time.getSeconds()){
         audio2.play();
         document.getElementById("stopMusic2").style.display = "inline";
         document.getElementById("unstopMusic").style.display = "none";
+        document.getElementById("playSong").style.display = "none";
 
     }
     document.getElementById("stopMusic2").addEventListener("click", function(){
@@ -119,23 +122,29 @@ let clock = window.setInterval(function(){
         document.getElementById("unstopMusic").style.display = "none";
         document.getElementById("stopMusic2").style.display = "inline";
     })
+
+    document.getElementById("playSong").addEventListener("click", function(){
+        audio2.play();
+        document.getElementById("unstopMusic").style.display = "none";
+        document.getElementById("stopMusic2").style.display = "inline";
+        document.getElementById("playSong").style.display = "none";
+    })
     document.getElementById("selectSong").addEventListener("click", function(){
         song = document.getElementById("playlist").value
         
         switch(song){
-            case "OneStepCloser":
+            case "Linkin Park - One Step Closer":
                 audio2.src = "One Step Closer.mp3";
                 break;
-            case "AllStar":
+            case "Smash Mouth - All Star":
                 audio2.src = "SmashMouth-AllStar_64kb.mp3";
                 break;
         }
+        document.getElementById("songPlaying").innerHTML = "Now Playing : " + document.getElementById("playlist").value;
     });
     
 }, 1000);
+
 function changeVolume(){
     audio2.volume = document.getElementById("volume").value;
 }
-
-
-

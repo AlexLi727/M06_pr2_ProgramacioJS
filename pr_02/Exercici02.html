@@ -7,7 +7,10 @@
     <script src="Alabau.js" defer></script>
 </head>
 <body>
+    <h2> Taula Propietats </h2>
     <div id = taula_propietats> </div>
+
+    <h2> Alarma </h2>
     <audio controls id = audio1 style = "display: none;">
         <source src = "SmashMouth-AllStar_64kb.mp3" type = "audio/mpeg">
     </audio>
@@ -22,6 +25,8 @@
     <button id = reset style= "display: none;"> Reset </button>
     <button id = stopMusic style = "display: none;"> Stop Music</button>
 
+    <h2> Rellotge </h2>
+    <div id = time> </div>
     <div id = reloj> </div>
     <audio controls id="audio2" style = "display:none;">
         <source src="SmashMouth-AllStar_64kb.mp3" type="audio/mpeg">
@@ -31,14 +36,21 @@
     <input type = number min = 0 max = 59 id = alarmMin>:
     <input type = number min = 0 max = 59 id = alarmSec>
     <button id = "setAlarm"> Set Alarm </button>
+    <br>
+    Volume: 
+    <input type = range min = 0 max = 1 step = 0.1 id = volume onchange = "changeVolume()">
+    <button id = playSong> Play </button>
     <button id = stopMusic2 style = "display: none;"> Pause </button>
     <button id = unstopMusic style = "display: none;"> Play</button>
-    <input type = range min = 0 max = 1 step = 0.1 id = volume onchange = "changeVolume()">
 
     <Select id = "playlist">
-        <option value = AllStar> Smash Mouth - All Star</option>
-        <option value = OneStepCloser> Linkin Park - One Step Closer</option>
+        <option value = "Smash Mouth - All Star"> Smash Mouth - All Star</option>
+        <option value = "Linkin Park - One Step Closer"> Linkin Park - One Step Closer</option>
     </Select>
     <button id = selectSong> Select Song </button>
+    <br>
+    <div id = songPlaying> </div>
+    
+    
 </body>
 </html>
